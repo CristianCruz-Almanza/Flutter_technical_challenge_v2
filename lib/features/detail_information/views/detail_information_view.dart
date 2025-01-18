@@ -31,12 +31,40 @@ class _DetailInformationViewState extends State<DetailInformationView> {
           if (viewModel.informationModel == null) {
             return Center(child: Text(viewModel.errorMessage));
           }
-          return Center(
-            child: Column(
-              children: [
-                Text(viewModel.informationModel?.title ?? ''),
-              ],
-            )
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: 'Title:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                      children: [
+                        TextSpan(
+                          text: viewModel.informationModel?.title ?? '' ,
+                          style: DefaultTextStyle.of(context).style,
+                        ),
+                      ],
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: 'Body:  ',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                      children: [
+                        TextSpan(
+                          text: viewModel.informationModel?.body ?? '',
+                          style: DefaultTextStyle.of(context).style,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            ),
           );
         }
       ),

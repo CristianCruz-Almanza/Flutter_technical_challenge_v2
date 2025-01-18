@@ -22,6 +22,9 @@ class InformationView extends StatelessWidget {
           if (viewModel.isLoading && viewModel.filteredInformationModel.isEmpty) {
             return Center(child: CircularProgressIndicator());
           }
+          if (viewModel.informationModel.isEmpty) {
+            return Center(child: Text(viewModel.errorMessage));
+          }
           return SafeArea(
             child: Center(
               child: viewModel.informationModel.isEmpty
